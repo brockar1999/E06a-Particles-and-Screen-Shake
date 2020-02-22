@@ -1,4 +1,4 @@
-# E06a-Particles-and-Screen-Shake
+# E06a-Particles-and-Screen-Shake Allie Brock MSCH-C220 Spring 2020
 
 As with other exercises, Fork and Clone this repository.
 

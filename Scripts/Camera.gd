@@ -10,6 +10,7 @@ var _trauma
 func _ready():
 	_start_position = position
 	_trauma = 0.0
+	
 
 func add_trauma(amount):
 	_trauma = min(_trauma + amount, 1)
@@ -31,3 +32,4 @@ func _apply_shake():
  
 func _get_neg_or_pos_scalar():
 	return rand_range(-1.0, 1.0)
+

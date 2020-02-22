@@ -1,20 +1,66 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=2]
+[ext_resource path="res://Assets/kenney.nl/scorch_02.png" type="Texture" id=3]
+[ext_resource path="res://Assets/kenney.nl/smoke_01.png" type="Texture" id=4]
+[ext_resource path="res://Assets/kenney.nl/flare_01.png" type="Texture" id=5]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.388571, 0.977143, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.735637, 0.409553, 0.23276, 1, 0.832031, 0.463219, 0.26326, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+gravity = Vector3( 50, -100, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 48.15
+flag_disable_z = true
+gravity = Vector3( 0, -50, 0 )
+angular_velocity = -240.0
+orbit_velocity = 0.5
+orbit_velocity_random = 0.0
+scale = 0.5
+color = Color( 0.929412, 0.956863, 0.678431, 1 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+spread = 180.0
+gravity = Vector3( -90, -50, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 100.0
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Particles1" type="Particles2D" parent="."]
 position = Vector2( 128, 256 )
+process_material = SubResource( 3 )
+texture = ExtResource( 3 )
 
 [node name="Particles2" type="Particles2D" parent="."]
 position = Vector2( 512, 256 )
+process_material = SubResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Particles3" type="Particles2D" parent="."]
 position = Vector2( 896, 256 )
+process_material = SubResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 512, 304 )
+current = true
 script = ExtResource( 1 )
